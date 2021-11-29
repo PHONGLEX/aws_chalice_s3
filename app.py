@@ -18,10 +18,7 @@ def index():
 @app.on_s3_event(bucket=os.environ['MEDIA_BUCKET_NAME'],
                  events=['s3:ObjectCreated:*'])
 def s3_thumbnail_generator(event):
-    # parse event
-    print(event)
-    # bucket = event['Records'][0]['s3']['bucket']['name']
-    # key = event['Records'][0]['s3']['object']['key']
+
     bucket = event.bucket
     key = event.key
     # only create a thumbnail on non thumbnail pictures
@@ -56,10 +53,7 @@ def new_filename(key):
 
 
 def upload_to_s3(bucket, key, image):
-    # We're saving the image into a cStringIO object to avoid writing to disk
     out_thumbnail = BytesIO()
-    # You MUST specify the file type because there is no file name to discern
-    # it from
     image.save(out_thumbnail, 'PNG')
     out_thumbnail.seek(0)
 
