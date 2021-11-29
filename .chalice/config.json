@@ -1,0 +1,13 @@
+{
+  "version": "2.0",
+  "app_name": "src",
+  "stages": {
+    "dev": {
+      "environment_variables": {
+        "THUMBNAIL_SIZE": "128",
+        "MEDIA_BUCKET_NAME": "phonglex-s3-thumbnail-generator"
+      },
+      "autogen_policy": false
+    }
+  }
+}
